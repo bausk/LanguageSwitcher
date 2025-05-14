@@ -5,6 +5,7 @@
     <UseWindowsForms>true</UseWindowsForms>
     <ApplicationIcon>app.ico</ApplicationIcon>
     <ApplicationManifest>app.manifest</ApplicationManifest>
+    <StartupObject>LanguageSwitcher.Program</StartupObject>
   </PropertyGroup>
 
   <ItemGroup>
