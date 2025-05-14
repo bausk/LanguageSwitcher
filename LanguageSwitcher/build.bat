@@ -1,21 +1,30 @@
 @echo off
-echo Building Language Switcher...
-dotnet build LanguageSwitcher.csproj -c Release /p:StartupObject=LanguageSwitcher.Program
+echo Building Language Switcher Application...
+cd LanguageSwitcherApp
+dotnet build -c Release
 if %ERRORLEVEL% NEQ 0 (
-    echo Error building Language Switcher
+    echo Error building Language Switcher Application
+    cd ..
     pause
     exit /b %ERRORLEVEL%
 )
+cd ..
 
 echo Building Language Switcher Setup...
-dotnet build LanguageSwitcherSetup.csproj -c Release /p:StartupObject=LanguageSwitcher.Setup.SetupProgram
+cd LanguageSwitcherSetup
+dotnet build -c Release
 if %ERRORLEVEL% NEQ 0 (
     echo Error building Language Switcher Setup
+    cd ..
     pause
     exit /b %ERRORLEVEL%
 )
+cd ..
 
-echo Build complete! Files are in bin\Release\net6.0-windows
+echo Build complete!
 echo.
-echo You can now install the application by running LanguageSwitcherSetup.exe
+echo Main application: LanguageSwitcherApp\bin\Release\net6.0-windows\LanguageSwitcherApp.exe
+echo Setup application: LanguageSwitcherSetup\bin\Release\net6.0-windows\LanguageSwitcherSetup.exe
+echo.
+echo Copy both files to a distribution folder to deploy the application.
 pause
