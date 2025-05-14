@@ -15,23 +15,23 @@ A simple Windows application that allows you to quickly switch between installed
 - .NET 6.0 Runtime (or later)
 - At least two keyboard layouts/languages installed in Windows
 
+## Project Structure
+
+- `LanguageSwitcherApp/` - The main application
+- `LanguageSwitcherSetup/` - The setup utility
+- `build.bat` - Script to build both applications
+- `make_dist.bat` - Script to create a distribution package
+
 ## Build Instructions
 
 1. Install .NET 6.0 SDK or later from https://dotnet.microsoft.com/download
 2. Open a command prompt and navigate to the LanguageSwitcher directory
-3. Build the main application:
-   ```
-   dotnet build LanguageSwitcher.csproj -c Release
-   ```
-4. Build the setup application:
-   ```
-   dotnet build LanguageSwitcherSetup.csproj -c Release
-   ```
-5. The compiled applications will be in the `bin\Release\net6.0-windows` folder
+3. Run `build.bat` to build both applications
+4. Run `make_dist.bat` to create a distribution package in the 'dist' folder
 
 ## Installation
 
-1. Copy all files from the `bin\Release\net6.0-windows` folder to a permanent location (e.g., C:\Program Files\LanguageSwitcher)
+1. Copy all files from the 'dist' folder to a permanent location (e.g., C:\Program Files\LanguageSwitcher)
 2. Run `LanguageSwitcherSetup.exe` as administrator to add the application to Windows startup
 
 ## Usage
