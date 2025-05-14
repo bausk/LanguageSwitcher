@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+  <title>Language Switcher</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f5f5f5;
+      color: #333;
+    }
+    .container {
+      max-width: 100%;
+      margin: 0 auto;
+      background-color: white;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      font-size: 24px;
+      margin-top: 0;
+      color: #2c3e50;
+    }
+    h2 {
+      font-size: 18px;
+      color: #3498db;
+    }
+    .current-language {
+      font-size: 18px;
+      margin: 20px 0;
+      padding: 10px;
+      background-color: #e8f4fc;
+      border-radius: 5px;
+    }
+    .controls {
+      margin-top: 30px;
+    }
+    .shortcut {
+      background-color: #f8f9fa;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      padding: 15px;
+      margin-bottom: 15px;
+    }
+    .shortcut-key {
+      display: inline-block;
+      background-color: #e9ecef;
+      border: 1px solid #ced4da;
+      border-radius: 3px;
+      padding: 3px 6px;
+      margin: 0 5px;
+      font-family: monospace;
+    }
+    .footer {
+      margin-top: 30px;
+      text-align: center;
+      font-size: 12px;
+      color: #7f8c8d;
+    }
+    button {
+      background-color: #3498db;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #2980b9;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Language Switcher</h1>
+    
+    <div class="current-language">
+      Current language: <span id="current-language">Loading...</span>
+    </div>
+    
+    <div class="controls">
+      <h2>Keyboard Shortcuts</h2>
+      
+      <div class="shortcut">
+        <div><span class="shortcut-key">Left Ctrl</span> - Switch to first language</div>
+      </div>
+      
+      <div class="shortcut">
+        <div><span class="shortcut-key">Right Ctrl</span> - Switch to second language</div>
+      </div>
+    </div>
+    
+    <div class="footer">
+      <p>Language Switcher runs in the system tray.</p>
+      <button id="quit-button">Quit Application</button>
+    </div>
+  </div>
+
+  <script>
+    // Get elements
+    const currentLanguageElement = document.getElementById('current-language');
+    const quitButton = document.getElementById('quit-button');
+    
+    // Update the current language display
+    async function updateLanguageDisplay() {
+      const language = await window.api.getCurrentLanguage();
+      currentLanguageElement.textContent = language.name || 'Unknown';
+    }
+    
+    // Initial update
+    updateLanguageDisplay();
+    
+    // Listen for language changes
+    window.api.onLanguageChange((language) => {
+      currentLanguageElement.textContent = language.name || 'Unknown';
+    });
+    
+    // Quit button
+    quitButton.addEventListener('click', () => {
+      window.api.quit();
+    });
+  </script>
+</body>
+</html>
