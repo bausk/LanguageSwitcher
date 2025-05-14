@@ -1,6 +1,6 @@
 @echo off
 echo Building Language Switcher...
-dotnet build LanguageSwitcher.csproj -c Release
+dotnet build LanguageSwitcher.csproj -c Release /p:StartupObject=LanguageSwitcher.Program
 if %ERRORLEVEL% NEQ 0 (
     echo Error building Language Switcher
     pause
@@ -8,7 +8,7 @@ if %ERRORLEVEL% NEQ 0 (
 )
 
 echo Building Language Switcher Setup...
-dotnet build LanguageSwitcherSetup.csproj -c Release
+dotnet build LanguageSwitcherSetup.csproj -c Release /p:StartupObject=LanguageSwitcher.Setup.SetupProgram
 if %ERRORLEVEL% NEQ 0 (
     echo Error building Language Switcher Setup
     pause
