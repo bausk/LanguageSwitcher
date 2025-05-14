@@ -48,3 +48,4 @@ A simple Windows application that allows you to quickly switch between installed
 - The first language is the first one in your Windows language list
 - The second language is the second one in your Windows language list
 - If you have only one language installed, both keys will switch to that language
+- The application uses the default system icon; you can replace it with a custom icon if desired
