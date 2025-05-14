@@ -6,8 +6,4 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <RootNamespace>LanguageSwitcher</RootNamespace>
   </PropertyGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Include="app.ico" />
-  </ItemGroup>
 </Project>
